@@ -3,18 +3,18 @@ pipeline {
     stages {
         stage('clean') {
             steps {
-                mvn clean
+                'mvn clean'
               
             }
         }
          stage('run smoke test') {
             steps {
-               mvn test -Dsuite=smoke.xml
+               sh 'mvn test -Dsuite=smoke.xml'
             }
         }
          stage('run regrression test') {
             steps {
-                mvn test -Dsuite=regression.xml
+                'mvn test -Dsuite=regression.xml'
             }
         }
     }
