@@ -8,6 +8,13 @@ pipeline {
         }
 
     stages {
+    
+    stage('Build Maven Itself') {
+            steps {
+                sh 'mvn -B -DskipTests clean package'
+            }
+            }
+            
         stage('Clean') {
             steps {
                sh 'mvn clean'
