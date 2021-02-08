@@ -1,20 +1,20 @@
 pipeline {
-    agent { docker { image 'jenkins/jenkins:lts ' } }
+    agent { any}
     stages {
         stage('clean') {
             steps {
-                'mvn clean'
+               sh mvn clean
               
             }
         }
          stage('run smoke test') {
             steps {
-               sh 'mvn test -Dsuite=smoke.xml'
+              sh mvn test -Dsuite=smoke.xml
             }
         }
          stage('run regrression test') {
             steps {
-                'mvn test -Dsuite=regression.xml'
+               sh mvn test -Dsuite=regression.xml
             }
         }
     }
