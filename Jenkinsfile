@@ -1,20 +1,26 @@
 pipeline {
-    agent { label 'master'}
+    agent { 
+    docker {
+        image 'maven:3-openjdk-8'
+        args '-v /root/.m2:/root/.m2'
+    }
+    }
+
     stages {
-        stage('clean') {
+        stage('Clean') {
             steps {
-               sh mvn clean
+               sh 'mvn clean'
               
             }
         }
-         stage('run smoke test') {
+         stage('Smoke Test') {
             steps {
-              sh mvn test -Dsuite=smoke.xml
+              sh 'mvn test -Dsuite=smoke.xml'
             }
         }
-         stage('run regrression test') {
+         stage('Regress  Test') {
             steps {
-               sh mvn test -Dsuite=regression.xml
+               sh 'mvn test -Dsuite=regression.xml'
             }
         }
     }
