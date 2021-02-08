@@ -32,7 +32,7 @@ public class BaseClass {
 		
 //		dc.setBrowserName("firefox");
 //		ChromeOptions co= new  ChromeOptions();
-//		co.merge(dc);
+//		co.merge(dc);//
 		
 		driver = new RemoteWebDriver(new URL(hubURL),dc);
 		
